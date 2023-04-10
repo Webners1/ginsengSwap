@@ -232,13 +232,13 @@ export default function SwapCurrencyInputPanel({
   const { account, chainId } = useWeb3React()
   const selectedCurrencyBalance = useCurrencyBalance(account ?? undefined, currency ?? undefined)
   const theme = useTheme()
-
+let currentBalance = selectedCurrencyBalance?.toSignificant(4)
   const handleDismissSearch = useCallback(() => {
     setModalOpen(false)
   }, [setModalOpen])
 
   const chainAllowed = isSupportedChain(chainId)
-
+  console.log("currentBalance",selectedCurrencyBalance)
   return (
     <InputPanel id={id} hideInput={hideInput} {...rest}>
       {locked && (
@@ -320,7 +320,7 @@ export default function SwapCurrencyInputPanel({
                       renderBalance ? (
                         renderBalance(selectedCurrencyBalance)
                       ) : (
-                        <Trans>Balance: {formatCurrencyAmount(selectedCurrencyBalance, 4)}</Trans>
+                        <Trans>{`Balance: ${currentBalance}`}</Trans>
                       )
                     ) : null}
                   </ThemedText.DeprecatedBody>

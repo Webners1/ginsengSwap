@@ -127,7 +127,7 @@ export function CurrencyRow({
   const warning = currency.isNative ? null : checkWarning(currency.address)
   const isBlockedToken = !!warning && !warning.canProceed
   const blockedTokenOpacity = '0.6'
-
+console.log("gdfgdfg",currency,balance?.toSignificant(4))
   // only show add or remove buttons if not on selected list
   return (
     <TraceEvent
